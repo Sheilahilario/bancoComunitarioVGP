@@ -24,7 +24,7 @@ $ npm run start:prod
 ## Running the app
 
 ```bash
-#node
+#dev mode
 $ npm run start:dev
 
 # unit tests
