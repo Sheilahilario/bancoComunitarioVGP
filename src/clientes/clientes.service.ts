@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Cliente } from './clientes.interfaces';
+import { Cliente } from './clientes.class';
 import { v4 as uuidv4 } from 'uuid';
-import { Conta } from 'src/contas/conta.interface';
+import { Conta } from 'src/contas/conta.class';
 
 @Injectable()
 export class ClientesService {
@@ -30,4 +30,13 @@ export class ClientesService {
     cliente.contas.push(conta);
     return cliente;
   }
+
+  buscarClientePorContaId(contaId: string): Cliente {
+    return this.clientes.find(cliente => cliente.contas.some(conta => conta.id === contaId));
+  }
+
+  buscarUm(id: string): Cliente {
+    return this.clientes.find(cliente => cliente.id === id);
+  }
+
 }
